@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { listen } from '@tauri-apps/api/event';
 import { invoke } from '@tauri-apps/api/tauri';
+import { open } from '@tauri-apps/api/dialog';
 import reactLogo from "./assets/react.svg";
 import debianLogo from "./assets/debian.svg";
 import "./App.css";
@@ -25,6 +26,26 @@ function App() {
       .catch(error => console.error(error));
   };
 
+  const handleFileSelect = async () => {
+    try {
+      const selected = await open({
+        multiple: false,
+        filters: [
+          { name: 'Debian Package', extensions: ['deb'] }
+        ]
+      });
+
+      if (selected) {
+        const filePath = Array.isArray(selected) ? selected[0] : selected;
+        // 调用 Tauri 后端安装包
+        invoke('install_package', { packagePath: filePath })
+          .catch(error => console.error(error));
+      }
+    } catch (error) {
+      console.error('Error selecting file:', error);
+    }
+  };
+
 
   return (
     <div className="container">
@@ -47,7 +68,8 @@ function App() {
 
       {/* <p>Click on the Tauri, Vite, and React logos to learn more.</p> */}
 
-      <div>
+    <div>
+      <button onClick={handleFileSelect}>Select Package</button>
       <input
         type="text"
         value={packagePath}
