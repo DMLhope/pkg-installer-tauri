@@ -5,3 +5,12 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafb);
 }
+
+.logo.debian:hover {
+  filter: drop-shadow(0 0 2em #d60c51);
+}
+
+.linebreak {
+  word-break: break-all;
+  word-wrap: break-word;
+}
