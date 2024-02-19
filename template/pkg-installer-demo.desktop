@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=
+Comment=A Tauri App for install deb
+Exec=pkg-installer-demo %U
+Icon=pkg-installer-demo
+Name=pkg-installer-demo
+Terminal=false
+Type=Application
+MimeType=application/x-deb;

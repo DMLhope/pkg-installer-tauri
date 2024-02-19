@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ -f /usr/share/applications/kde-mimeapps.list ]; then
+    echo "application/x-deb=pkg-installer-demo.desktop" >>/usr/share/applications/kde-mimeapps.list
+elif [ ! -f /usr/share/applications/mimeapps.list ];then
+cat <<EOF >> /usr/share/applications/mimeapps.list
+[Default Applications]
+application/x-deb=pkg-installer-demo.desktop
+EOF
+else
+    echo "application/x-deb=pkg-installer-demo.desktop" >>/usr/share/applications/mimeapps.list
+fi

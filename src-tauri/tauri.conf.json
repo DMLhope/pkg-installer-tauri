@@ -22,15 +22,21 @@
     },
     "bundle": {
       "active": true,
-      "targets": "all",
+      "targets": "deb",
       "identifier": "",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
-        "icons/128x128@2x.png",
-        "icons/icon.icns",
-        "icons/icon.ico"
-      ]
+        "icons/128x128@2x.png"
+      ],
+      "deb":{
+        "depends": ["xdg-utils"],
+        "files": {
+          "../control/postinst": "../template/postinst",
+          "../control/postrm": "../template/postrm",
+          "/usr/share/applications/pkg-installer-demo.desktop": "../template/pkg-installer-demo.desktop"
+        }
+      }
     },
     "security": {
       "csp": null
@@ -41,7 +47,7 @@
         "resizable": true,
         "title": "pkg-installer-demo-react",
         "width": 1024,
-        "height": 768,
+        "height": 1024,
         "center": true
       }
     ]

@@ -12,12 +12,25 @@ function App() {
   const [packagePath, setPackagePath] = useState('');
 
   useEffect(() => {
-    const unlisten = listen('log', (event) => {
+    // 在组件挂载时调用 Rust 的 get_args 函数
+    invoke('get_args')
+      .then((args) => {
+        // 处理获取到的命令行参数，这里假设第一个参数是 pkgpath
+        if (args && args.length > 1) {
+          // setPackagePath(args[1]);
+          var packagePath = args[1];
+          invoke('install_package', { packagePath })
+            .catch(error => console.error(error));
+        }
+      })
+      .catch((error) => console.error('Error fetching args:', error));
+
+    const logUnlisten = listen('log', (event) => {
       setLogs((currentLogs) => [...currentLogs, event.payload]);
     });
 
     return () => {
-      unlisten.then((fn) => fn());
+      logUnlisten.then((fn) => fn());
     };
   }, []);
 
