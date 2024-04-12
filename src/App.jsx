@@ -5,7 +5,7 @@ import { open } from '@tauri-apps/api/dialog';
 import reactLogo from "./assets/react.svg";
 import debianLogo from "./assets/debian.svg";
 import "./App.css";
-
+import { Card, CardBody } from "@nextui-org/react";
 function App() {
 
   const [logs, setLogs] = useState([]);
@@ -62,7 +62,13 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Welcome to Pkg-installer!</h1>
+      <Card>
+        <CardBody>
+          {/* <h1>Welcome to Pkg-installer!</h1> */}
+          <p>test</p>
+        </CardBody>
+      </Card>
+
 
       <div className="row">
         <a href="https://vitejs.dev" target="_blank">
@@ -81,22 +87,22 @@ function App() {
 
       {/* <p>Click on the Tauri, Vite, and React logos to learn more.</p> */}
 
-    <div>
-      <button onClick={handleFileSelect}>Select Package</button>
-      <input
-        type="text"
-        value={packagePath}
-        onChange={(e) => setPackagePath(e.target.value)}
-        placeholder="Enter package path"
-      />
-      <button onClick={handleInstallClick}>Install Package</button>
       <div>
-        {logs.map((log, index) => (
-          <div key={index}>{log}</div>
-        ))}
+        <button onClick={handleFileSelect}>Select Package</button>
+        <input
+          type="text"
+          value={packagePath}
+          onChange={(e) => setPackagePath(e.target.value)}
+          placeholder="Enter package path"
+        />
+        <button onClick={handleInstallClick}>Install Package</button>
+        <div>
+          {logs.map((log, index) => (
+            <div key={index}>{log}</div>
+          ))}
+        </div>
       </div>
-    </div>
-      
+
     </div>
   );
 }

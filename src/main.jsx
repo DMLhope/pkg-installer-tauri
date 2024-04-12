@@ -1,10 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
-import "./styles.css";
+// import App from "./App";
+import App from "./Test";
+// import "./styles.css";
+import "./index.css"
+import { NextUIProvider } from "@nextui-org/react";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+
+    <NextUIProvider>
+      <App /> 
+    </NextUIProvider>
   </React.StrictMode>,
 );

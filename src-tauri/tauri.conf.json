@@ -46,8 +46,8 @@
         "fullscreen": false,
         "resizable": true,
         "title": "pkg-installer-demo-react",
-        "width": 1024,
-        "height": 1024,
+        "width": 600,
+        "height": 400,
         "center": true
       }
     ]
